@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./elements/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('./elements/header'); %>
+</header>
+
+<% 
+    let dog = 32;
+    dog = dog * 2;
+%> 
+
+<main>
+  <div class="jumbotron">
+    <h1>This is great</h1>
+    <p>Welcome to templating using EJS</p>
+    <span id="<%= "cachorro" %>"><%= dog; %></span> 
+  </div>
+</main>
+
+<footer>
+  <%- include('./elements/footer'); %>
+</footer>
+
+</body>
+</html>
