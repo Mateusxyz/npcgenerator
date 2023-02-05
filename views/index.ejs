@@ -9,7 +9,7 @@
   <%- include('./elements/header'); %>
 </header>
 
-<%- include('./elements/card'); %>
+
 
 <% 
     let dog = 32;
@@ -21,6 +21,9 @@
     <h1>This is great</h1>
     <p>Welcome to templating using EJS</p>
     <span id="<%= "cachorro" %>"><%= dog; %></span> 
+    <div class="cards-container">
+      <%- include('./elements/card'); %>
+    </div>
   </div>
 </main>
 
