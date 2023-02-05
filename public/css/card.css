@@ -1,21 +1,45 @@
+.card-wrapper {
+  height: auto;
+  width: 420px;
+
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 350px auto;
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+}
+
+.card .stats {
+  height: 100%;
+  display: grid;
+}
+
 .attributes {
     display: grid;
+    height: auto;
     grid-template-columns: auto auto auto auto auto;
     gap: 8px;
     background-color: #C00000;
     padding: 10px 10px 0px 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.attributes > span {
+.attributes .attributes-item {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  padding: 20px 0;
+  padding: 25px;
   font-size: 30px;
 }
 
 .health {
+  height: auto;
   display: grid;
-  grid-template-columns: auto auto 210.5px;
+  align-items: center;
+  grid-template-columns: auto auto auto;
   gap: 8px;
   background-color: #C00000;
   padding: 10px;
@@ -25,6 +49,6 @@
 .health > span {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  padding: 20px 0;
+  padding: 20px;
   font-size: 30px;
 }

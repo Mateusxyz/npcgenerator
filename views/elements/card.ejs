@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="http://127.0.0.1:8080/css/card.css">
+
 <!--
 Cria a array attributes e randomiza os valores de cada atributo dentro dela
 -->
@@ -20,33 +22,43 @@ attributes.forEach(attribute => {
 });
 %>
 
-<!--
-Renderiza todos os atributos com seus respectivos valores    
--->
-<div class="attributes">
-    <% attributes.forEach(function(attribute) { %>
-    <span><%= attribute%>: <%= attribute_value[attribute]; %></span>
-    <% }) %>
+<div class="card-wrapper">
+    <div class="card">
+        <img src="https://cdn.discordapp.com/attachments/458666281529245717/1071540382011248801/tavares_homem_alto_e_magro_com_cabelos_pretos_lisos_e_olhos_cin_35588968-a83c-408f-97b8-7a24e24e5d99.png"/>
+        <div class="stats">
+            <!--
+            Render all attributes with random values
+            -->
+            <div class="attributes">
+                <% attributes.forEach(function(attribute) { %>
+                <span class="attributes-item"><%= attribute%>: <%= attribute_value[attribute]; %></span>
+                <% }) %>
+            </div>
+            <!--
+            Calculates the hitpoints 
+            -->
+            <% 
+            let will = attribute_value.WILL
+            let body = attribute_value.BODY
+            let TotalHitPoints = Math.ceil(10 + (5 * Math.round((will+body) / 2)))
+            %>  
+    
+            <!--
+            Calculates seriously wounded and death save
+            -->
+            <% 
+            let SeriouslyWounded = Math.round(TotalHitPoints / 2)
+            %>
+    
+            <div class="health">
+                <span>Hit Points: <%= TotalHitPoints %></span>
+                <span>Seriously Wounded: <%= SeriouslyWounded %></span>
+                <span>Death Save: <%= body %></span>
+            </div>
+        </div>
+    </div>    
 </div>
 
-<!--
-Calcula os Hit Points
--->
-<% 
-let will = attribute_value.WILL
-let body = attribute_value.BODY
-let TotalHitPoints = Math.ceil(10 + (5 * Math.round((will+body) / 2)))
-%>  
 
-<!--
-Calcula o Seriously Wounded e definindo Death Save
--->
-<% 
-let SeriouslyWounded = Math.round(TotalHitPoints / 2)
-%>
 
-<div class="health">
-    <span>Hit Points: <%= TotalHitPoints %></span>
-    <span>Seriously Wounded: <%= SeriouslyWounded %></span>
-    <span>Death Save: <%= body %></span>
-</div>
+
