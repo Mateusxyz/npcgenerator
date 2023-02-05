@@ -1,0 +1,27 @@
+<%
+ let attribute_value = {}
+ let attributes = [
+    'INT',
+    'REF',
+    'DEX',
+    'TECH',
+    'COOL',
+    'WILL',
+    'LUCK',
+    'MOVE',
+    'BODY',
+    'EMP'
+]
+
+attributes.forEach(element => {
+    attribute_value[element] = Math.floor(Math.random() * (8 - 1) + 1)
+});
+
+%>
+    
+
+<div class="attributes">
+    <% attributes.forEach(function(attribute) { %>
+    <span><%= attribute%>: <%= attribute_value[attribute]; %></span>
+    <% }) %>
+</div>

@@ -1,0 +1,14 @@
+.attributes {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 10px;
+    background-color: #C00000;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.attributes > span {
+  background-color: rgba(255, 120, 120, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
