@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+import express from 'express';
+export const router = express.Router()
 
 // use res.render to load up an ejs view file
 
@@ -15,5 +15,3 @@ router.get('/about', function (req, res) {
 
 //expondo a pasta public
 router.use(express.static('public'))
-
-module.exports = router
