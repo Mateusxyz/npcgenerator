@@ -33,18 +33,14 @@ Renderiza todos os atributos com seus respectivos valores
 Calcula os Hit Points
 -->
 <% 
-console.log(attribute_value)
 let will = attribute_value.WILL
 let body = attribute_value.BODY
-
 let TotalHitPoints = Math.ceil(10 + (5 * Math.round((will+body) / 2)))
-console.log(TotalHitPoints)
 %>  
 
 <!--
 Calcula o Seriously Wounded e definindo Death Save
 -->
-
 <% 
 let SeriouslyWounded = Math.round(TotalHitPoints / 2)
 %>
