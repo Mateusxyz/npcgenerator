@@ -14,6 +14,6 @@ router.get('/about', function (req, res) {
 });
 
 //expondo a pasta public
-app.use(express.static('public'))
+router.use(express.static('public'))
 
 module.exports = router
