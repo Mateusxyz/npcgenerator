@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include('./elements/head'); %>
 </head>
-<body class="container" style="background-color: black;">
 
-<header>
-  <%- include('./elements/header'); %>
-</header>
+<body class="border border-primary">
 
+  <header>
+    <%- include('./elements/header'); %>
+  </header>
 
-
-<% 
-    let dog = 32;
-    dog = dog * 2;
-%> 
-
-<main>
-  <div class="jumbotron">
-    <h1>This is great</h1>
-    <p>Welcome to templating using EJS</p>
-    <span id="<%= "cachorro" %>"><%= dog; %></span> 
-    <div class="cards-container">
-      <%- include('./elements/card'); %>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <span>This is great</span>
+    </div>
+    <button class="col-md-2 btn btn-primary" id="generate">Gerar</button>
+    <div class="cards-container border border-primary container-fluid">
     </div>
   </div>
-</main>
 
-<footer>
-  <%- include('./elements/footer'); %>
-</footer>
+  <footer>
+    <%- include('./elements/footer'); %>
+  </footer>
 
 </body>
+
 </html>

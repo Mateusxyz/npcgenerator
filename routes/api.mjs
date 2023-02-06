@@ -14,7 +14,7 @@ apiRouter.post('/create-char', createChar);
 apiRouter.post('/create-char/:id', editChar);
 
 //generate new char
-apiRouter.post('/generate-char', generateChar);
+apiRouter.get('/generate-char', generateChar);
 
 //delete new char
 apiRouter.delete('/create-char/:id', delChar);
