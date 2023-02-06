@@ -17,8 +17,18 @@
                 <span>Death Save: <%= body %></span>
             </div>
         </div>
-        <div class="weapons">
-          <%=selectedWeaponName[0]+" "%> <button class="dice" data-roll="<%=damage%>">  <%=damage%>  </button> <%=" "+magazine%>
+        <div class="inventory">
+            <div class="weapons">
+                <%=selectedWeaponName[0]+" "%> <button class="dice" data-roll="<%=damage%>">  <%=damage%>  </button> <%=" "+magazine%>
+              </div>
+              <div class="skills">
+                  <% skills.forEach(function(skill){ %>
+                     <span><%= skill.skill %> <%= skill.level%>, </span>
+                 <% })%>
+              </div>
+              <div class="cyberwear">
+                Cybereye: Anti-Dazzle, Chyron; Neural Link: Sandevistan
+              </div>
         </div>
     </div>    
 </div>

@@ -12,7 +12,8 @@
   grid-row: 2;
   }
 
-.card .weapons {
+.card .inventory {
+  display: grid;
   text-align: center;
   grid-column: 2;
   grid-row: 2;
