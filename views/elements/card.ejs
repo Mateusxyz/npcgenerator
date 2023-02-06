@@ -1,27 +1,5 @@
 <link rel="stylesheet" href="http://127.0.0.1:8080/css/card.css">
 
-<!--
-Cria a array attributes e randomiza os valores de cada atributo dentro dela
--->
-<%
- let attribute_value = {}
- let attributes = [
-    'INT',
-    'REF',
-    'DEX',
-    'TECH',
-    'COOL',
-    'WILL',
-    'LUCK',
-    'MOVE',
-    'BODY',
-    'EMP'
-]
-attributes.forEach(attribute => {
-    attribute_value[attribute] = Math.floor(Math.random() * (5   - 1) + 2)
-});
-%>
-
 <div class="card-wrapper">
     <div class="card">
         <img src="https://cdn.discordapp.com/attachments/458666281529245717/1071540382011248801/tavares_homem_alto_e_magro_com_cabelos_pretos_lisos_e_olhos_cin_35588968-a83c-408f-97b8-7a24e24e5d99.png"/>
@@ -34,21 +12,6 @@ attributes.forEach(attribute => {
                 <span class="attributes-item"><%= attribute%>: <%= attribute_value[attribute]; %></span>
                 <% }) %>
             </div>
-            <!--
-            Calculates the hitpoints 
-            -->
-            <% 
-            let will = attribute_value.WILL
-            let body = attribute_value.BODY
-            let TotalHitPoints = Math.ceil(10 + (5 * Math.round((will+body) / 2)))
-            %>  
-    
-            <!--
-            Calculates seriously wounded and death save
-            -->
-            <% 
-            let SeriouslyWounded = Math.round(TotalHitPoints / 2)
-            %>
     
             <div class="health">
                 <span>Hit Points: <%= TotalHitPoints %></span>
