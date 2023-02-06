@@ -1,8 +1,7 @@
 <link rel="stylesheet" href="http://127.0.0.1:8080/css/card.css">
 
-<div class="card-wrapper">
+<div class="card-wrapper border border-secondary">
     <div class="card">
-        <img src="https://cdn.discordapp.com/attachments/458666281529245717/1071540382011248801/tavares_homem_alto_e_magro_com_cabelos_pretos_lisos_e_olhos_cin_35588968-a83c-408f-97b8-7a24e24e5d99.png"/>
         <div class="stats">
             <!--
             Render all attributes with random values
@@ -12,12 +11,14 @@
                 <span class="attributes-item"><%= attribute%>: <%= attribute_value[attribute]; %></span>
                 <% }) %>
             </div>
-    
             <div class="health">
                 <span>Hit Points: <%= TotalHitPoints %></span>
                 <span>Seriously Wounded: <%= SeriouslyWounded %></span>
                 <span>Death Save: <%= body %></span>
             </div>
+        </div>
+        <div class="weapons">
+          <%=selectedWeaponName[0]+" "%> <button>  <%=damage%>  </button> <%=" "+magazine%>
         </div>
     </div>    
 </div>

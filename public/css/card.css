@@ -1,54 +1,52 @@
-.card-wrapper {
-  height: auto;
-  width: 420px;
-
-}
-
 .card {
+  width: 520px;
   display: grid;
-  grid-template-columns: 350px auto;
+  grid-template-columns: 250px auto;
+  grid-template-rows: 25px auto auto;
+  border: none; 
 }
 
-.card img {
-  height: 100%;
-  width: 100%;
-}
 
 .card .stats {
-  height: 100%;
   display: grid;
-}
+  grid-row: 2;
+  }
+
+.card .weapons {
+  text-align: center;
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 10px;
+  }
 
 .attributes {
     display: grid;
-    height: auto;
-    grid-template-columns: auto auto auto auto auto;
-    gap: 8px;
-    background-color: #C00000;
+    grid-template-columns: 40px 40px 40px 40px 40px;
+    gap: 3px;
     padding: 10px 10px 0px 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .attributes .attributes-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 25px;
-  font-size: 30px;
+  font-size: 10px;
 }
 
 .health {
-  height: auto;
   display: grid;
   align-items: center;
-  grid-template-columns: auto auto auto;
-  gap: 8px;
-  background-color: #C00000;
+  grid-template-columns: 65px 105px 70px;
+  gap: 3px;
   padding: 10px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .health > span {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px;
-  font-size: 30px;
+  font-size: 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+button:focus {
+  outline: none;
 }

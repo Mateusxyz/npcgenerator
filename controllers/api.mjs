@@ -36,7 +36,61 @@ export function generateChar(req, res) {
     //Calculates seriously wounded and death save
     let SeriouslyWounded = Math.round(TotalHitPoints / 2)
 
-    res.render('elements/card',{SeriouslyWounded, TotalHitPoints, attributes, attribute_value, body, will});
+    //Get the rest from the book
+    let weapons = [
+        {
+          pistol: [
+            {
+              "Medium Pistol": {
+                damage: "2d6",
+                magazine: 12
+              }
+            },
+            {
+              "Heavy Pistol": {
+                damage: "3d6",
+                magazine: 8
+              }
+            },
+            {
+              "Very Heavy Pistol": {
+                damage: "4d6",
+                magazine: 8
+              }
+            }
+          ]
+        },
+        {
+          smg: [
+            {
+              "SMG": {
+                damage: "2d6",
+                magazine: 30
+              }
+            },
+            {
+              "Heavy SMG": {
+                damage: "3d6",
+                magazine: 40
+              }
+            }
+          ]
+        }
+      ];
+
+    let weaponTypeRandom = Math.floor(Math.random() * weapons.length)
+    let selectedWeaponType = weapons[weaponTypeRandom]
+    let selectedWeaponTypeName = Object.keys(selectedWeaponType)
+
+    let weaponRandom = Math.floor(Math.random() * selectedWeaponType[selectedWeaponTypeName].length)
+    let selectedWeapon = selectedWeaponType[selectedWeaponTypeName][weaponRandom]
+    let selectedWeaponName = Object.keys(selectedWeapon)
+
+    let magazine = selectedWeapon[selectedWeaponName].magazine
+    let damage = selectedWeapon[selectedWeaponName].damage  
+
+    res.render('elements/card',{SeriouslyWounded, TotalHitPoints, attributes, attribute_value, body, will, selectedWeaponName, damage, magazine});
+    
 }
 
 export function delChar(req, res) {
