@@ -6,10 +6,24 @@
             <!--
             Render all attributes with random values
             -->
+            <div class="title grid">
+                Attributes     
+            </div>
             <div class="attributes">
-                <% attributes.forEach(function(attribute) { %>
-                <span class="attributes-item"><%= attribute%>: <%= attribute_value[attribute]; %></span>
-                <% }) %>
+                    <% attributes.forEach(function(attribute) { %>
+                    <span class="attributes-item"><%= attribute%>: <%= attribute_value[attribute]; %></span>
+                    <% }) %>                    
+            </div>
+            <div class="title grid">
+                Skills
+            </div>
+            <div class="skills">
+                <% skills.forEach(function(skill){ %>
+                   <button data-roll="1d10" data-bonus="<%= skill.stat%>+<%=skill.level%>" class="skills-item"><%= skill.skill %> <%= skill.level%>; </button>
+               <% })%>
+            </div>
+            <div class="title grid">
+                Health
             </div>
             <div class="health">
                 <span>Hit Points: <%= TotalHitPoints %></span>
@@ -18,17 +32,24 @@
             </div>
         </div>
         <div class="inventory">
+            <div class="title grid">
+                Weapons
+            </div>
             <div class="weapons">
                 <%=selectedWeaponName[0]+" "%> <button class="dice" data-roll="<%=damage%>">  <%=damage%>  </button> <%=" "+magazine%>
-              </div>
-              <div class="skills">
-                  <% skills.forEach(function(skill){ %>
-                     <span><%= skill.skill %> <%= skill.level%>, </span>
-                 <% })%>
-              </div>
-              <div class="cyberwear">
+            </div>
+            <div class="title grid">
+                Cyberware
+            </div>
+              <div class="cyberware">
                 Cybereye: Anti-Dazzle, Chyron; Neural Link: Sandevistan
-              </div>
+            </div>
+            <div class="title grid">
+                Comments
+            </div>
+            <textarea id="w3review" class="comments" rows="4" cols="50">
+                
+            </textarea>
         </div>
     </div>    
 </div>

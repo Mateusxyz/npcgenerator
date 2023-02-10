@@ -113,7 +113,7 @@ export function generateChar(req, res) {
       {
         skill: "Evasion",
         stat: attribute_value.DEX,
-        level: 0,
+        level: 0, 
       },
       {
         skill: "Melee Weapon",
