@@ -1,44 +1,63 @@
+*:focus {
+  outline: none;
+}
+
 .card {
-  width: 520px;
+  width: 620px;
+  height: 270px;
   display: grid;
-  grid-template-columns: 250px auto;
-  grid-template-rows: 25px auto auto;
+  grid-template-columns: 330px auto;
+  grid-template-rows: 25px auto;
   border: none; 
 }
 
 
 .card .stats {
+  align-items: center;
+  text-align: center;
   display: grid;
   grid-row: 2;
+  font-size: 13px;
   }
 
-.card .weapons {
+.card .inventory {
+  display: grid;
   text-align: center;
   grid-column: 2;
   grid-row: 2;
-  font-size: 10px;
+  font-size: 13px;
   }
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 3px;
+}
 
 .attributes {
     display: grid;
-    grid-template-columns: 40px 40px 40px 40px 40px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
     gap: 3px;
-    padding: 10px 10px 0px 10px;
+    padding: 10px;
 }
-.attributes .attributes-item {
-  font-size: 10px;
+
+.skills {
+  padding: 10px;
+}
+
+.comments {
+  border: none;
+  resize: none;
+  text-align: center;
+  height: 90px;
 }
 
 .health {
   display: grid;
   align-items: center;
-  grid-template-columns: 65px 105px 70px;
+  grid-template-columns: 85px 136px 80px;
   gap: 3px;
   padding: 10px;
-}
-
-.health > span {
-  font-size: 10px;
 }
 
 button {
@@ -47,6 +66,4 @@ button {
   padding: 0;
 }
 
-button:focus {
-  outline: none;
-}
+

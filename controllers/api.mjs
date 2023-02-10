@@ -60,7 +60,48 @@ export async function generateChar(req, res) {
 
     let charObj = await saveChar(char)
 
-    res.send(charObj);
+    let magazine = selectedWeapon[selectedWeaponName].magazine
+    let damage = selectedWeapon[selectedWeaponName].damage  
+
+    let skills = [
+      {
+        skill: "Perception",
+        stat: attribute_value.INT,
+        level: 0,
+      },
+      {
+        skill: "Cryptography",
+        stat: attribute_value.INT,
+        level: 0,
+      },
+      {
+        skill: "Deduction",
+        stat: attribute_value.INT,
+        level: 0,
+      },
+      {
+        skill: "Brawling",
+        stat: attribute_value.DEX,
+        level: 0,
+      },
+      {
+        skill: "Evasion",
+        stat: attribute_value.DEX,
+        level: 0, 
+      },
+      {
+        skill: "Melee Weapon",
+        stat: attribute_value.DEX,
+        level: 0,
+      },
+      {
+        skill: "Science",
+        stat: attribute_value.INT,
+        level: 0,
+      }
+    ]
+
+    res.render('elements/card',{SeriouslyWounded, TotalHitPoints, attributes, attribute_value, body, will, selectedWeaponName, damage, magazine, skills});
     
 }
 
