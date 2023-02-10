@@ -1,98 +1,101 @@
-export function listChar(req, res) {
-    res.render('elements/card');
+import Character from "../models/Character.mjs";
+import { Weapon } from "../models/Weapon.mjs";
+
+export async function listChar(req, res) {
+   const char = await Character.find().populate("weapons");
+   res.send(char)
 }
 
-export function createChar(req, res) {
+export async function createChar(req, res) {
 
 }
 
-export function editChar(req, res) {
+export async function editChar(req, res) {
 
 }
 
-export function generateChar(req, res) {
+export async function generateChar(req, res) {
     //Cria a array attributes e randomiza os valores de cada atributo dentro dela
     let attribute_value = {}
     let attributes = [
-        'INT',
-        'REF',
-        'DEX',
-        'TECH',
-        'COOL',
-        'WILL',
-        'LUCK',
-        'MOVE',
-        'BODY',
-        'EMP'
+        'int',
+        'ref',
+        'dex',
+        'tech',
+        'cool',
+        'will',
+        'luck',
+        'move',
+        'body',
+        'emp'
     ]
     attributes.forEach(attribute => {
         attribute_value[attribute] = Math.floor(Math.random() * (5 - 1) + 2)
     });
     //Calculates the hitpoints
-    let will = attribute_value.WILL
-    let body = attribute_value.BODY
+    let will = attribute_value.will
+    let body = attribute_value.body
     let TotalHitPoints = Math.ceil(10 + (5 * Math.round((will + body) / 2)))
 
     //Calculates seriously wounded and death save
     let SeriouslyWounded = Math.round(TotalHitPoints / 2)
 
-    //Get the rest from the book
-    let weapons = [
-        {
-          pistol: [
-            {
-              "Medium Pistol": {
-                damage: "2d6",
-                magazine: 12
-              }
-            },
-            {
-              "Heavy Pistol": {
-                damage: "3d6",
-                magazine: 8
-              }
-            },
-            {
-              "Very Heavy Pistol": {
-                damage: "4d6",
-                magazine: 8
-              }
-            }
-          ]
-        },
-        {
-          smg: [
-            {
-              "SMG": {
-                damage: "2d6",
-                magazine: 30
-              }
-            },
-            {
-              "Heavy SMG": {
-                damage: "3d6",
-                magazine: 40
-              }
-            }
-          ]
-        }
-      ];
+    //Read the whole weapon collection
+    let weapons = await Weapon.find();
+    let weaponAmount = getRandomInt(1, 3);
+    let weaponArr = []
+      
+    for (let i = 0; i < weaponAmount; i++) {
+      let wIndex = getRandomInt(0, weaponAmount);
+      if (wIndex == 0) {
+        continue;
+      }
+      weaponArr.push(weapons[wIndex]);
+    }
 
-    let weaponTypeRandom = Math.floor(Math.random() * weapons.length)
-    let selectedWeaponType = weapons[weaponTypeRandom]
-    let selectedWeaponTypeName = Object.keys(selectedWeaponType)
+    const char = attribute_value;
+    char.wounded = SeriouslyWounded;
+    char.hitpoints = TotalHitPoints;
+    char.weapons = weaponArr;
 
-    let weaponRandom = Math.floor(Math.random() * selectedWeaponType[selectedWeaponTypeName].length)
-    let selectedWeapon = selectedWeaponType[selectedWeaponTypeName][weaponRandom]
-    let selectedWeaponName = Object.keys(selectedWeapon)
+    let charObj = await saveChar(char)
 
-    let magazine = selectedWeapon[selectedWeaponName].magazine
-    let damage = selectedWeapon[selectedWeaponName].damage  
-
-    res.render('elements/card',{SeriouslyWounded, TotalHitPoints, attributes, attribute_value, body, will, selectedWeaponName, damage, magazine});
+    res.send(charObj);
     
 }
 
-export function delChar(req, res) {
+export async function delChar(req, res) {
 
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+async function saveChar(char) { 
+  
+  if(char.weapons != undefined){
+    let weapons = []
+    char.weapons.forEach((el)=>{
+      weapons.push(el._id)
+      //console.log(charid._id)
+    })
+
+    char.weapons = weapons;
+
+    
+    /* 
+    try {
+      console.log(await CharacterWeapon.insertMany(weapons))
+    } catch (error) {
+      console.error(error)
+    } */
+
+    const charDoc = new Character(char);
+    return char = await charDoc.save();
+    
+
+  }
 }

@@ -11,10 +11,10 @@ apiRouter.get('/', listChar);
 apiRouter.post('/create-char', createChar);
 
 // editar char
-apiRouter.post('/create-char/:id', editChar);
+apiRouter.post('/edit-char/:id', editChar);
 
 //generate new char
 apiRouter.get('/generate-char', generateChar);
 
 //delete new char
-apiRouter.delete('/create-char/:id', delChar);
+apiRouter.delete('/del-char/:id', delChar);
