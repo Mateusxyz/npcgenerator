@@ -2,17 +2,13 @@ import mongoose, { Schema } from "mongoose";
 
 
 const SkillSchema = new Schema({
-  skill: {
+  name: {
     type: String,
     required: true
   },
-  stat: {
+  linkedattribute: {
     type: String,
     required: true
-  },
-  level: {
-    type: Number,
-    default: 0
   }
 });
 

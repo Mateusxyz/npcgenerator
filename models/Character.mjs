@@ -22,8 +22,8 @@ const CharacterSchema = new mongoose.Schema({
     }],
     skills: [{
         type: mongoose.Types.ObjectId,
-        ref: 'Skill',
-        required: true,
+        ref: 'CharSkill',
+        required: false,
     }]
 
 })

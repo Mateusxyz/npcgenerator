@@ -1,4 +1,5 @@
 import Character from "../models/Character.mjs";
+import { CharSkill } from "../models/CharSkill.mjs";
 import { Skill } from "../models/Skill.mjs";
 import { Weapon } from "../models/Weapon.mjs";
 
@@ -54,16 +55,23 @@ export async function generateChar(req, res) {
       weaponArr.push(weapons[wIndex]);
     }
 
+    //Read the whole armor
+
     const char = attribute_value;
     char.wounded = SeriouslyWounded;
     char.hitpoints = TotalHitPoints;
     char.weapons = weaponArr;
+    char.skills = await Skill.find()
+    await(char.skills).map(element => {
+      element.skill_id = element._id
+      delete element._id
+    });
 
     let charObj = await saveChar(char)  
 
-    char.skills = await Skill.find();
 
-    res.render('elements/card',{char});
+    res.send(charObj)
+    //res.render('elements/card',{char});
     
 }
 
@@ -78,27 +86,25 @@ function getRandomInt(min, max) {
 }
 
 async function saveChar(char) { 
-  
-  if(char.weapons != undefined){
-    let weapons = []
-    char.weapons.forEach((el)=>{
-      weapons.push(el._id)
-      //console.log(charid._id)
-    })
+  const charDoc = new Character(char);
+  const returnChar = await charDoc.save();
+  if (char.skills != undefined) {
+    char.skills.forEach(element => {
+      element.char = returnChar._id
+      
+    });
 
-    char.weapons = weapons;
+    console.log(char.skills)
 
-    
-    /* 
+
     try {
-      console.log(await CharacterWeapon.insertMany(weapons))
+      await CharSkill.create(char.skills)
+      
     } catch (error) {
       console.error(error)
-    } */
-
-    const charDoc = new Character(char);
-    return char = await charDoc.save();
-    
-
+    }
+    //
   }
+
+  return returnChar
 }
